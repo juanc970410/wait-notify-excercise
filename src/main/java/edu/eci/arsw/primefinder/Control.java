@@ -7,6 +7,7 @@ package edu.eci.arsw.primefinder;
 
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.concurrent.Worker;
 
 /**
  *
@@ -51,11 +52,15 @@ public class Control extends Thread {
             sleep(1000);
             for (int i = 0; i < pft.length; i++) {
                 pft[i].setDuerma(true);   
-                
             }
-            for (int i = 0; i < pft.length; i++) {
-                System.out.println(pft[i].getPrimes().size());
+            State est = new Thread().getState().WAITING;
+            int cont = 0;
+            while (cont<pft.length){
+                if (pft[cont].getState().equals(est)){
+                    cont++;
+                }
             }
+            
             synchronized(lock){
                 lock.notifyAll();
             }

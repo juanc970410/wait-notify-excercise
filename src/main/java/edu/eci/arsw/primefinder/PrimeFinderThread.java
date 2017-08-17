@@ -39,7 +39,7 @@ public class PrimeFinderThread extends Thread {
 
             }
             if(duerma){
-                
+                System.out.println(primes.size());
                 synchronized(lock){
                     try {
                         lock.wait();
